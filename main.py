@@ -10,7 +10,7 @@ username = config.email_user
 password = config.email_password
 
 mail = imaplib.IMAP4_SSL(host)
-df = open("json - Kopya.txt", "r")
+df = open("json.txt", "r")
 print(df)
 
 def find_between( s, first, last ):
@@ -81,29 +81,29 @@ if __name__ == "__main__":
 
                     if order_action == 'buy' and order_contracts == 1.0 and position_size == 1.0:
                         make_order.longEnter()
-                        print("long isleme giriliyor")
+                        print("Opening the long position")
 
                     if order_action == 'buy' and order_contracts == 1.0 and position_size == 0.0:
                         make_order.shortExit()
-                        print("shorttan cikiliyor(tp/sl)")
+                        print("Closing the short position(tp/sl)")
 
                     if order_action == 'buy' and order_contracts >= 2.0 and position_size >= 1.0:
                         make_order.shortExit()
                         make_order.longEnter()
-                        print("shorttan cikip long isleme giriliyor")
+                        print("Closing short and opening the long position")
 
                     if order_action == 'sell' and order_contracts == 1.0 and position_size == -1.0:
                         make_order.shortEnter()
-                        print("short isleme giriliyor")
+                        print("Opening the short position")
 
                     if order_action == 'sell' and order_contracts == 1.0 and position_size == 0.0:
                         make_order.longExit()
-                        print("longdan cikiliyor(tp/sl)")
+                        print("Closing the long position(tp/sl)")
 
                     if order_action == 'sell' and order_contracts >= 2.0 and position_size <= -1.0:
                         make_order.longExit()
                         make_order.shortEnter()
-                        print("longdan cikilip shorta giriliyor")
+                        print("Closing long and opening the short position")
         except MemoryError as me:
             print(me)
         except Exception as e:
